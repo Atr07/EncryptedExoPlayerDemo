@@ -2,7 +2,7 @@ package com.test.exoplayer2;
 
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
@@ -34,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
   public static final String AES_ALGORITHM = "AES";
   public static final String AES_TRANSFORMATION = "AES/CTR/NoPadding";
 
-  private static final String ENCRYPTED_FILE_NAME = "encrypted.mp4";
+  private static final String ENCRYPTED_FILE_NAME = "BigBuckBunnyEncrypted.exo.enc";
+  private static final String URL_1 = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
+  private static final String URL_2 = "https://www.radiantmediaplayer.com/media/bbb-360p.mp4";
 
   private Cipher mCipher;
   private SecretKeySpec mSecretKeySpec;
@@ -50,9 +52,11 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    mSimpleExoPlayerView = (SimpleExoPlayerView) findViewById(R.id.simpleexoplayerview);
+    mSimpleExoPlayerView = findViewById(R.id.simpleexoplayerview);
 
     mEncryptedFile = new File(getFilesDir(), ENCRYPTED_FILE_NAME);
+
+    Log.d(getClass().getCanonicalName(), getFilesDir().getAbsolutePath());
 
     SecureRandom secureRandom = new SecureRandom();
     byte[] key = new byte[16];
@@ -84,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
       return;
     }
     try {
+
       Cipher encryptionCipher = Cipher.getInstance(AES_TRANSFORMATION);
       encryptionCipher.init(Cipher.ENCRYPT_MODE, mSecretKeySpec, mIvParameterSpec);
       // TODO:
@@ -91,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
       // the ciphers, key and iv used in this demo, or to see it from top to bottom,
       // supply a url to a remote unencrypted file - this method will download and encrypt it
       // this first argument needs to be that url, not null or empty...
-      new DownloadAndEncryptFileTask(null, mEncryptedFile, encryptionCipher).execute();
+      new DownloadAndEncryptFileTask(URL_2, mEncryptedFile, encryptionCipher).execute();
     } catch (Exception e) {
       e.printStackTrace();
     }
