@@ -9,6 +9,12 @@
     android:gravity="center"
     tools:context="com.test.exoplayer2.MainActivity">
 
+  <!--<Button
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Choose Path"
+      android:onClick="choosePath" />-->
+
   <Button
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"

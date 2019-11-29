@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EncryptedExoPlayerDemo.iml" filepath="$PROJECT_DIR$/EncryptedExoPlayerDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/EncryptedExoPlayerDemo-app.iml" filepath="$PROJECT_DIR$/app/EncryptedExoPlayerDemo-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
